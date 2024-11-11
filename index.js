@@ -5,7 +5,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff);
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
 camera.position.z = 30;
 
 const renderer = new THREE.WebGLRenderer();
@@ -15,7 +15,7 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const loader = new GLTFLoader();
-const instanceCount = 100;
+const instanceCount = 500;
 let instancedMesh;
 const rotationAxes = [];
 const rotationSpeeds = [];
@@ -26,7 +26,7 @@ loader.load('/Export.glb', (gltf) => {
     instancedMesh = new THREE.InstancedMesh(gondola.geometry, originalMaterial, instanceCount);
 
     const matrix = new THREE.Matrix4();
-    const scale = 1;
+    const scale = 0.5;
 
     for (let i = 0; i < instanceCount; i++) {
         const x = (Math.random() - 0.5) * 40;
@@ -42,8 +42,8 @@ loader.load('/Export.glb', (gltf) => {
 
     scene.add(instancedMesh);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    const ambientLight = new THREE.AmbientLight(0xffffff,2);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
     directionalLight.position.set(1, 1, 1);
     scene.add(ambientLight);
     scene.add(directionalLight);
