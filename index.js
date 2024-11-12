@@ -15,7 +15,7 @@ document.body.appendChild(renderer.domElement);
 const controls = new OrbitControls(camera, renderer.domElement);
 
 const loader = new GLTFLoader();
-const instanceCount = 500;
+const instanceCount = 200;
 let instancedMesh;
 const rotationAxes = [];
 const rotationSpeeds = [];
